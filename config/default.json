@@ -1,0 +1,10 @@
+{
+    "NAME": "receiptz: API",
+    "TOKEN_EXPIRATION_IN_MILLIS": 5184000000,
+    "DEFAULT_TOKEN_LENGTH": 48,
+    "DEFAULT_TOKEN_EXPIRY": 86400000,
+    "WEBSITE_LINK": "https://receiptz.herokuapp.com",
+    "WEB_SERVER_PORT": 3300,
+    "VERIFY_ACCOUNT_LINK": "https://receiptz.herokuapp.com/verifyaccount/:token",
+    "RESET_PASSWORD_LINK": "https://receiptz.herokuapp.com/forgotpassword/:token"
+}
