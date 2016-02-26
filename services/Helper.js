@@ -66,7 +66,8 @@ exports.randomBytes = function(length, callback) {
 };
 
 
-var _renderTemplate = function(templateName, context, callback) {
+var _renderTemplate = function(templateName, message, callback) {
+  var context = JSON.parse(message);
   var filePath = path.join(__dirname, '../templates/' + templateName + '.jade');
   fse.readFile(filePath, 'utf8', function(err, file) {
     if(err) {

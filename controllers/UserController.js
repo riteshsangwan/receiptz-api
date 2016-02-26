@@ -25,8 +25,7 @@ exports.register = function(req, res, next) {
   var error = controllerHelper.checkString(entity.firstName, 'First Name') || controllerHelper.checkString(entity.lastName, 'Last Name') ||
                 controllerHelper.checkEmail(entity.email, 'Email') || controllerHelper.checkString(entity.password, 'Password');
 
-  error = error || controllerHelper.checkString(entity.deviceId, 'Device Token') || controllerHelper.checkDeviceType(entity.deviceType, 'Device Type') ||
-            controllerHelper.checkDefined(entity.country, 'Country') || controllerHelper.checkString(entity.mobileNumber, 'Mobile Number');
+  error = error || controllerHelper.checkDefined(entity.country, 'Country') || controllerHelper.checkString(entity.mobileNumber, 'Mobile Number');
 
   if(error) {
     return next(error);

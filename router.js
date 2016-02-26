@@ -30,7 +30,7 @@ module.exports = function() {
 
   router.post('/users/updatePassword', tokenMiddleware, userController.updatePassword);
   router.post('/users/updateProfile', tokenMiddleware, userController.updateProfile);
-  router.post('/users/updateDevice', tokenMiddleware, userController.updateDevice);
+  router.post('/users/:id/updateDevice', tokenMiddleware, userController.updateDevice);
   router.get('/me', tokenMiddleware, userController.me);
   router.get('/countries', countryController.getAll);
   router.post('/resetForgottonPassword', userController.resetForgottonPassword);
