@@ -91,9 +91,15 @@ exports.checkEmail = function(email, name) {
   } else if(!tester.test(email)) {
     isValid = false;
   }
+  if(!isValid) {
+    return new errors.ValidationEmail(name + ' should a valid email');
+  }
   var parts = email.split('@');
   if(parts[0].length > 64) {
     isValid = false;
+  }
+  if(!isValid) {
+    return new errors.ValidationEmail(name + ' should a valid email');
   }
   var domainParts = parts[1].split('.');
   if(domainParts.some(function(domainPart) { return domainPart.length > 63; })) {
