@@ -14,7 +14,7 @@ var express = require('express'),
   router = require('./router'),
   ErrorHandler = require('./middlewares/ErrorHandler'),
   Responser = require('./middlewares/Responser'),
-  logger = require('./logger'),
+  logger = require('./logger').getLogger(),
   responseTransformer = require('./middlewares/ResponseTransformer'),
   config = require('config');
 
