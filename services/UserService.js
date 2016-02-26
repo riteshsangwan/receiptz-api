@@ -93,8 +93,6 @@ exports.authenticate = function(credentials, callback) {
     function(user, cb) {
       if(!user) {
         return cb(new errors.NotFoundError('User not found for given email address'));
-      } else if(user.verifyAccountToken) {
-        return cb(new errors.ValidationError('Kindly verify the account first, then proceed for login'));
       } else {
         cb(null, user);
       }
