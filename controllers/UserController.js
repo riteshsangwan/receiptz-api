@@ -11,6 +11,7 @@
 var controllerHelper = require('./ControllerHelper');
 var httpStatus = require('http-status');
 var userService = require('../services/UserService');
+var constants = require('../constants');
 
 /**
  * Register a user in the system
@@ -30,6 +31,7 @@ exports.register = function(req, res, next) {
   if(error) {
     return next(error);
   }
+  entity.type = constants.userTypes.INDIVIDUAL;
   userService.register(entity, function(err, user) {
     if(err) {
       return next(err);
