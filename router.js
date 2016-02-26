@@ -15,6 +15,8 @@ var countryController = require('./controllers/CountryController');
 var config = require('config');
 var auth = new Auth({jwtSecret: config.JWT_SECRET});
 var tokenMiddleware = auth.process({strategy: Auth.strategy.token});
+var organizationController = require('./controllers/OrganizationController'),
+  receiptController = require('./controllers/ReceiptController');
 
 module.exports = function() {
   var options = {
@@ -35,5 +37,15 @@ module.exports = function() {
   router.get('/countries', countryController.getAll);
   router.post('/resetForgottonPassword', userController.resetForgottonPassword);
   router.get('/verifyAccount', userController.verifyAccount);
+
+  // receipts
+  router.post('/receipts', tokenMiddleware, receiptController.create);
+  router.get('/receipts', tokenMiddleware, receiptController.listByOrganization);
+  router.get('/receipts/:id', tokenMiddleware, receiptController.get);
+  router.get('/me/receipts', tokenMiddleware, receiptController.listByUser);
+
+  // organizations
+  router.post('/organizations', organizationController.create);
+
   return router;
 };

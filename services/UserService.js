@@ -113,7 +113,8 @@ exports.authenticate = function(credentials, callback) {
       var token = jwt.encode({
         expiration: millis,
         type: user.type,
-        userId: user._id
+        userId: user._id,
+        orgId: user.orgId,
       }, config.JWT_SECRET);
       cb(null, {token: token});
     }
@@ -297,4 +298,12 @@ exports.verifyAccount = function(token, callback) {
       user.save(cb);
     }
   ], callback);
+};
+
+exports.findByMobileNumber = function(number, callback) {
+  User.findOne({mobileNumber: number}, callback);
+};
+
+exports.findById = function(id, callback) {
+  User.findById(id, callback);
 };

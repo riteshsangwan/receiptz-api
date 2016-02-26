@@ -44,7 +44,8 @@ var UserSchema = new Schema({
   resetPasswordToken: {type: String, required: false},
   verifyAccountToken: {type: String, required: false},
   resetPasswordTokenExpiry: {type: Date, required: false},
-  verifyAccountTokenExpiry: {type: Date, required: false}
+  verifyAccountTokenExpiry: {type: Date, required: false},
+  orgId: {type: String, required: false}
 });
 // add timestamp plugin
 UserSchema.plugin(timestamps);
