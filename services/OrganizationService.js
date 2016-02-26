@@ -37,10 +37,14 @@ exports.create = function(entity, user, callback) {
       user.orgId = created._id;
       // create the user
       userService.register(user, function(err, user) {
-        // if error occured, delete already created organization
-        created.remove(function(err) {
-          cb(err, user);
-        });
+        if(err) {
+          // if error occured, delete already created organization
+          created.remove(function(err) {
+            cb(err, user);
+          });
+        } else {
+          cb(null, user);
+        }
       });
     }
   ], callback);
