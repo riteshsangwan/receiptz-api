@@ -66,3 +66,35 @@ exports.create = function(req, res, next) {
     next();
   });
 };
+
+/**
+ * Route handler for GET '/organizations/items' endpoint
+ * @param  {Object}     req       Express request instance
+ * @param  {Object}     res       Express response instance
+ * @param  {Function}   next      next function to call next middleware in chain
+ */
+exports.getItems = function(req, res, next) {
+  organizationService.getItems(req.auth, function(err, content) {
+    if(err) {
+      return next(err);
+    }
+    req.data = {
+      statusCode: httpStatus.CREATED,
+      content: content
+    };
+    next();
+  });
+};
+
+exports.getDashboard = function(req, res, next) {
+  organizationService.getDashboard(req.auth, function(err, content) {
+    if(err) {
+      return next(err);
+    }
+    req.data = {
+      statusCode: httpStatus.CREATED,
+      content: content
+    };
+    next();
+  });
+};

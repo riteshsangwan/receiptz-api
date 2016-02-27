@@ -8,8 +8,10 @@
  */
 
 var OrganizationSchema = require('../models/Organization').OrganizationSchema,
+  ItemSchema = require('../models/Item').ItemSchema,
   config = require('config'),
   db = require('../datasource').getDb(config.MONGODB_URL),
+  Item = db.model('Item', ItemSchema),
   Organization = db.model('Organization', OrganizationSchema);
 
 var errors = require('common-errors');
@@ -65,4 +67,16 @@ exports.findById = function(id, callback) {
       callback(null, organization);
     }
   });
+};
+
+exports.getItems = function(auth, callback) {
+  if(!auth.orgId) {
+    return callback(new errors.NotPermittedError('User is not allowed to perform this operation'));
+  }
+  Item.find({ orgId: auth.orgId }, callback);
+};
+
+exports.getDashboard = function(auth, callback) {
+  // dummy implementation
+  callback(null, []);
 };

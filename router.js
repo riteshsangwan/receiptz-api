@@ -46,6 +46,8 @@ module.exports = function() {
 
   // organizations
   router.post('/organizations', organizationController.create);
+  router.get('/organizations/items', organizationController.getItems);
+  router.get('/organizations/dashboard', organizationController.getDashboard);
 
   return router;
 };
