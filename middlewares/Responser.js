@@ -43,7 +43,7 @@ Responser.prototype.middleware = function() {
     }
     // log the response if environment is not test and debug is set to true
     if(process.env.NODE_ENV !== TEST_ENV && _self.options.debug) {
-      logging.debug('Exiting from responser', req.data);
+      logging.info('Exiting from responser', req.data);
     }
     var statusCode = req.data.statusCode || _self.options.defaultStatusCode;
     if(req.data.content) {

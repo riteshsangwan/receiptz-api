@@ -31,7 +31,7 @@ var _validateOrganization = function(entity, callback) {
   error = error || controllerHelper.checkDefined(picked.country, 'Country') || controllerHelper.checkString(picked.mobileNumber, 'Mobile Number');
   // validate organization field
   error = error || controllerHelper.checkString(picked.name, 'name') || controllerHelper.checkString(picked.streetAddress, 'Street Address') ||
-            controllerHelper.checkString(picked.city, 'city') || controllerHelper.checkString(picked.state, 'state') || controllerHelper.checkString(picked.tax, 'tax') || controllerHelper.checkString(picked.zipCode, 'Zip code');
+            controllerHelper.checkString(picked.city, 'city') || controllerHelper.checkString(picked.state, 'state') || controllerHelper.checkPositiveNumber(picked.tax, 'tax') || controllerHelper.checkString(picked.zipCode, 'Zip code');
   if(error) {
     return callback(error);
   }
